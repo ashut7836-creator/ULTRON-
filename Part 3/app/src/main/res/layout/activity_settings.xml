@@ -176,7 +176,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Keeps Jarvis alive in background"
+                            android:text="Keeps Ultron alive in background"
                             android:textColor="@color/text_secondary"
                             android:textSize="11sp" />
                     </LinearLayout>
@@ -426,7 +426,7 @@
                     android:layout_marginTop="12dp"
                     android:textColor="@color/text_muted"
                     android:textSize="11sp"
-                    android:text="Permissions must be allowed for JARVIS features to operate." />
+                    android:text="Permissions must be allowed for ULTRON features to operate." />
 
             </LinearLayout>
 
@@ -824,7 +824,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="JARVIS will never send any message without explicit verbal confirmation."
+                    android:text="ULTRON will never send any message without explicit verbal confirmation."
                     android:textColor="@color/text_muted"
                     android:textSize="11sp" />
             </LinearLayout>

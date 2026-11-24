@@ -72,7 +72,7 @@
             android:layout_height="34dp"
             android:src="@drawable/ic_jarvis_logo"
             android:scaleType="fitCenter"
-            android:contentDescription="Jarvis Logo" />
+            android:contentDescription="Ultron Logo" />
 
         <TextView
             android:id="@+id/tvGreeting"
