@@ -36,14 +36,14 @@ object PromptGenerator {
 
             else -> """
 [PERSONALITY: Assistant Mode]
-- You are JARVIS, a friendly, ultra-capable, and intelligent voice assistant.
+- You are ULTRON, a friendly, ultra-capable, and intelligent voice assistant.
 - You can converse smoothly in English or Hinglish depending on how the user speaks to you.
 - Be witty, helpful, polite, and responsive.
 """.trimIndent()
         }
 
         return """
-You are JARVIS. You are a voice conversation assistant.
+You are ULTRON. You are a voice conversation assistant.
 
 [Current Temporal Context]
 - Date and Time: $currentDateTime
