@@ -72,7 +72,7 @@ data class JarvisLiveError(
 )
 
 /**
- * Owns the *entire* Jarvis conversation lifecycle: the microphone, the audio
+ * Owns the *entire* Ultron conversation lifecycle: the microphone, the audio
  * player, the Gemini Live WebSocket, the 120-second inactivity timer, and the
  * wake-word standby listener.
  *
@@ -80,7 +80,7 @@ data class JarvisLiveError(
  * user removes the app from Recents (or the screen turns off), Android
  * destroys the Activity and its ViewModel - if the live session lived there,
  * the conversation would die with it. Because everything here is owned by a
- * foreground service instead, the mic stays on and Jarvis keeps talking
+ * foreground service instead, the mic stays on and Ultron keeps talking
  * normally even with the app closed. The Activity/ViewModel only *observes*
  * this service's state through the companion StateFlows below; they never
  * own the audio pipeline.
@@ -508,7 +508,7 @@ class JarvisConversationService : Service() {
                 val shown = taskProgressOverlay?.update(snapshot, showIdleAvatar) == true
                 if (snapshot != null && !shown && overlayPermissionWarningTaskId != snapshot.taskId) {
                     overlayPermissionWarningTaskId = snapshot.taskId
-                    _events.emit("Task progress is shown inside JARVIS Home. Allow Display over other apps if you want the floating task panel over Instagram, Spotify, and Chrome.")
+                    _events.emit("Task progress is shown inside ULTRON Home. Allow Display over other apps if you want the floating task panel over Instagram, Spotify, and Chrome.")
                 }
             }
         }
@@ -521,7 +521,7 @@ class JarvisConversationService : Service() {
                         !PermissionHelper.hasNotificationPermission(this@JarvisConversationService))) {
                     Log.w("JarvisService", "A required runtime permission was revoked during the live session; stopping the session")
                     stopActiveConversation()
-                    serviceScope.launch { _events.emit("Jarvis paused because a required permission was turned off. Re-enable it in System Permissions to continue.") }
+                    serviceScope.launch { _events.emit("Ultron paused because a required permission was turned off. Re-enable it in System Permissions to continue.") }
                 }
                 if (com.jarvis.assistant.automation.agent.AgentTaskEngine.current() != null &&
                     !PermissionHelper.isAccessibilityServiceEnabled(this@JarvisConversationService)) {
@@ -725,7 +725,7 @@ class JarvisConversationService : Service() {
         if (apiKey.isBlank()) {
             _liveError.value = JarvisLiveError(
                 title = "API KEY MISSING",
-                message = "No Gemini API Key configured. Please enter your API Key in Settings to activate Jarvis.",
+                message = "No Gemini API Key configured. Please enter your API Key in Settings to activate Ultron.",
                 errorCode = "API_KEY_MISSING",
                 actionText = "OPEN SETTINGS"
             )
@@ -737,11 +737,11 @@ class JarvisConversationService : Service() {
         if (!PermissionHelper.hasAllRequiredPermissions(this)) {
             _liveError.value = JarvisLiveError(
                 title = "PERMISSIONS REQUIRED",
-                message = "Jarvis requires Microphone and Notification permissions to run. Please grant them in Authorizations.",
+                message = "Ultron requires Microphone and Notification permissions to run. Please grant them in Authorizations.",
                 errorCode = "PERMISSIONS_MISSING",
                 actionText = "GRANT PERMISSIONS"
             )
-            serviceScope.launch { _events.emit("Please allow all required permissions in Settings to use Jarvis.") }
+            serviceScope.launch { _events.emit("Please allow all required permissions in Settings to use Ultron.") }
             fullStop()
             return
         }
@@ -830,7 +830,7 @@ class JarvisConversationService : Service() {
                                 if (isPendingWakeGreeting) {
                                     isPendingWakeGreeting = false
                                     if (!hasSpeechInCurrentUtterance) {
-                                        liveWebSocket?.sendClientContent("Hey Jarvis")
+                                        liveWebSocket?.sendClientContent("Hey Ultron")
                                     }
                                 }
                             }
@@ -1268,7 +1268,7 @@ class JarvisConversationService : Service() {
                                 "API_KEY_MISSING" -> {
                                     _liveError.value = JarvisLiveError(
                                         title = "API KEY MISSING",
-                                        message = "No Gemini API key found. Enter your BYOK key in Settings to activate Jarvis.",
+                                        message = "No Gemini API key found. Enter your BYOK key in Settings to activate Ultron.",
                                         errorCode = "API_KEY_MISSING",
                                         actionText = "OPEN SETTINGS"
                                     )
@@ -1561,7 +1561,7 @@ class JarvisConversationService : Service() {
                                             setConversationState(ConversationState.IDLE)
                                             lastResponseTimedOut = true
                                             updateNotification()
-                                            serviceScope.launch { _events.emit("Jarvis did not receive a reply. Check the connection and repeat your request.") }
+                                            serviceScope.launch { _events.emit("Ultron did not receive a reply. Check the connection and repeat your request.") }
                                         }
                                     }
                                 }
@@ -1590,7 +1590,7 @@ class JarvisConversationService : Service() {
     @Volatile
     private var lastCommandExecutionTime = 0L
 
-    // Holds a command that Jarvis heard but isn't confident enough about to run blindly
+    // Holds a command that Ultron heard but isn't confident enough about to run blindly
     // (e.g. a YouTube title that sounded too short/garbled). Cleared once the user
     // confirms or cancels it in a follow-up turn.
     @Volatile
@@ -2016,7 +2016,7 @@ class JarvisConversationService : Service() {
                             is com.jarvis.assistant.util.ContactCaller.CallResult.Success -> Pair(true, "Calling ${callResult.contact.name}.")
                             is com.jarvis.assistant.util.ContactCaller.CallResult.NoMatch -> Pair(false, "Could not find contact $contact.")
                             is com.jarvis.assistant.util.ContactCaller.CallResult.MultipleMatches -> Pair(false, "Multiple contacts found for $contact.")
-                            is com.jarvis.assistant.util.ContactCaller.CallResult.MissingContactsPermission -> Pair(false, "Contacts permission is not granted, so JARVIS cannot look up that saved contact.")
+                            is com.jarvis.assistant.util.ContactCaller.CallResult.MissingContactsPermission -> Pair(false, "Contacts permission is not granted, so ULTRON cannot look up that saved contact.")
                             is com.jarvis.assistant.util.ContactCaller.CallResult.MissingCallPermission -> Pair(false, "Phone call permission is not granted.")
                             is com.jarvis.assistant.util.ContactCaller.CallResult.CallFailed -> Pair(false, "Could not place phone call.")
                         }
@@ -2061,7 +2061,7 @@ class JarvisConversationService : Service() {
                         val userAskedForStandby = isExplicitStandbyCommand(currentTurnUserText.toString())
                         if (!userAskedForStandby) {
                             result.put("success", false)
-                            result.put("message", "REFUSED: The user's current request did not explicitly ask Jarvis to go to standby. Keep the conversation active and continue the requested task.")
+                            result.put("message", "REFUSED: The user's current request did not explicitly ask Ultron to go to standby. Keep the conversation active and continue the requested task.")
                         } else if (isAutonomousTaskRunning) {
                             // Going to standby mid-task stopped the conversation and left the task unfinished.
                             result.put("success", false)
@@ -2070,7 +2070,7 @@ class JarvisConversationService : Service() {
                             minimizeToHomeScreen()
                             enterStandby(announce = false)
                             result.put("success", true)
-                            result.put("message", "Sent JARVIS to background standby mode.")
+                            result.put("message", "Sent ULTRON to background standby mode.")
                         }
                     }
 
@@ -2433,7 +2433,7 @@ class JarvisConversationService : Service() {
         }
         val openTargetTerms = normalizedGoal.split(Regex("[^\\p{L}\\p{N}]+"))
             .filter { it.length >= 3 }
-            .filterNot { it in expectedAppWords || it in setOf("jarvis", "please", "open", "launch", "start", "app", "the", "khol", "kholo", "do") }
+            .filterNot { it in expectedAppWords || it in setOf("ultron", "please", "open", "launch", "start", "app", "the", "khol", "kholo", "do") }
         if (expectedPackage != null && openIntent) {
             if (openTargetTerms.isEmpty()) return true to "Expected application is foreground: $packageName"
             val destinationMatched = elements.any { item ->
@@ -2445,7 +2445,7 @@ class JarvisConversationService : Service() {
 
         val targetTerms = normalizedGoal.split(Regex("[^\\p{L}\\p{N}]+"))
             .filter { it.length >= 3 }
-            .filterNot { it in setOf("jarvis", "please", "open", "launch", "start", "spotify", "youtube", "instagram", "playlist", "meri", "mera", "par", "mein", "find", "search", "look", "song", "track", "play", "karo", "kar", "do", "dhundo", "dhoondh", "liked", "reels", "posts", "unlike", "all", "every", "the", "for", "and", "with", "aur", "ko", "pe", "se", "ke", "ki", "ka", "bajao", "wale", "wali") }
+            .filterNot { it in setOf("ultron", "please", "open", "launch", "start", "spotify", "youtube", "instagram", "playlist", "meri", "mera", "par", "mein", "find", "search", "look", "song", "track", "play", "karo", "kar", "do", "dhundo", "dhoondh", "liked", "reels", "posts", "unlike", "all", "every", "the", "for", "and", "with", "aur", "ko", "pe", "se", "ke", "ki", "ka", "bajao", "wale", "wali") }
         val matchingVisibleItems = elements.filter { item ->
             !item.isEditable && item.hasTextOrDesc && targetTerms.isNotEmpty() &&
                 targetTerms.all { term -> item.primaryLabel.lowercase(Locale.ROOT).contains(term) }
@@ -2599,7 +2599,7 @@ class JarvisConversationService : Service() {
 
         if (cmd != null && parsed.confidence >= 0.90f) {
             // If the requested video/song is too vague or could easily be a mis-hearing
-            // (e.g. Jarvis only caught one short/filler word), confirm with the user
+            // (e.g. Ultron only caught one short/filler word), confirm with the user
             // instead of guessing and playing the wrong thing.
             if (cmd is com.jarvis.assistant.automation.command.JarvisCommand.PlayYouTube &&
                 com.jarvis.assistant.automation.command.CommandParser.isAmbiguousPlayQuery(cmd.query)
@@ -2975,8 +2975,8 @@ class JarvisConversationService : Service() {
 
         try {
             standbyActivatedTime = System.currentTimeMillis()
-            // Phrase grammar: allow single-word "jarvis", multi-syllable wake phrases, and [unk]
-            val grammar = "[\"jarvis\", \"hey jarvis\", \"hi jarvis\", \"hello jarvis\", \"ok jarvis\", \"okay jarvis\", \"wake up jarvis\", \"sun jarvis\", \"suno jarvis\", \"jarvis jarvis\", \"[unk]\"]"
+            // Phrase grammar: allow single-word "ultron", multi-syllable wake phrases, and [unk]
+            val grammar = "[\"ultron\", \"hey ultron\", \"hi ultron\", \"hello ultron\", \"ok ultron\", \"okay ultron\", \"wake up ultron\", \"sun ultron\", \"suno ultron\", \"ultron ultron\", \"[unk]\"]"
             val rec = Recognizer(model, 16000.0f, grammar)
             rec.setWords(true)
             val spkModel = VoskModelManager.speakerModel
@@ -3032,16 +3032,16 @@ class JarvisConversationService : Service() {
     }
 
     private val VALID_WAKE_PHRASES = setOf(
-        "jarvis",
-        "hey jarvis",
-        "hi jarvis",
-        "hello jarvis",
-        "ok jarvis",
-        "okay jarvis",
-        "wake up jarvis",
-        "sun jarvis",
-        "suno jarvis",
-        "jarvis jarvis"
+        "ultron",
+        "hey ultron",
+        "hi ultron",
+        "hello ultron",
+        "ok ultron",
+        "okay ultron",
+        "wake up ultron",
+        "sun ultron",
+        "suno ultron",
+        "ultron ultron"
     )
 
     private fun checkVoskHypothesis(hypothesisJson: String?) {
@@ -3086,7 +3086,7 @@ class JarvisConversationService : Service() {
             val cleanPhrase = wordList.joinToString(" ")
             val isMatch = cleanPhrase in VALID_WAKE_PHRASES ||
                     VALID_WAKE_PHRASES.any { cleanPhrase.contains(it) } ||
-                    wordList.contains("jarvis")
+                    wordList.contains("ultron")
 
             if (!isMatch) {
                 Log.d("JarvisService", "WAKE REJECTED: '$cleanPhrase' is not an exact valid wake phrase.")
@@ -3102,21 +3102,21 @@ class JarvisConversationService : Service() {
 
             // 4. Acoustic Verification:
             // 4. Acoustic Verification:
-            // "jarvis" must be specifically recognized with confidence
-            val jarvisConf = wordConfMap["jarvis"] ?: 0.0
+            // "ultron" must be specifically recognized with confidence
+            val jarvisConf = wordConfMap["ultron"] ?: 0.0
             if (jarvisConf < 0.70) {
-                Log.w("JarvisService", "WAKE REJECTED: 'jarvis' word confidence too low ($jarvisConf < 0.70). Ignored.")
+                Log.w("JarvisService", "WAKE REJECTED: 'ultron' word confidence too low ($jarvisConf < 0.70). Ignored.")
                 return
             }
 
-            if (wordList.size == 1 && wordList[0] == "jarvis") {
-                // Standalone single-word "jarvis"
+            if (wordList.size == 1 && wordList[0] == "ultron") {
+                // Standalone single-word "ultron"
                 if (avgConf < 0.75) {
-                    Log.w("JarvisService", "WAKE REJECTED: Standalone 'jarvis' failed checks (conf=$avgConf). Ignored.")
+                    Log.w("JarvisService", "WAKE REJECTED: Standalone 'ultron' failed checks (conf=$avgConf). Ignored.")
                     return
                 }
             } else {
-                // Multi-word phrases like "hey jarvis", "hello jarvis", "ok jarvis"
+                // Multi-word phrases like "hey ultron", "hello ultron", "ok ultron"
                 if (avgConf < 0.65) {
                     Log.w("JarvisService", "WAKE REJECTED: Wake phrase failed checks (conf=$avgConf). Ignored.")
                     return
@@ -3293,7 +3293,7 @@ class JarvisConversationService : Service() {
             "go to background", "go background", "go in background", "go in the background",
             "background me jao", "background mein jao", "send to background", "move to background",
             "minimize", "go home", "go to home", "go to home screen",
-            "go to sleep", "sleep jarvis", "enter standby", "standby mode", "go to standby",
+            "go to sleep", "sleep ultron", "enter standby", "standby mode", "go to standby",
             "take a break", "so jao"
         )
         return patterns.any { containsPhrase(clean, it) }
@@ -3316,9 +3316,9 @@ class JarvisConversationService : Service() {
         val app = application as? JarvisApp
         val movedBack = app?.moveAppToBack() == true
         if (movedBack) {
-            Log.i("JarvisService", "JARVIS foreground activity moved to back safely")
+            Log.i("JarvisService", "ULTRON foreground activity moved to back safely")
         } else {
-            Log.i("JarvisService", "JARVIS going to background standby; leaving active foreground app intact")
+            Log.i("JarvisService", "ULTRON going to background standby; leaving active foreground app intact")
         }
     }
 
@@ -3349,7 +3349,7 @@ class JarvisConversationService : Service() {
 
     private fun createChannel() {
         (getSystemService(NOTIFICATION_SERVICE) as NotificationManager).createNotificationChannel(
-            NotificationChannel(CHANNEL_ID, "Jarvis", NotificationManager.IMPORTANCE_LOW)
+            NotificationChannel(CHANNEL_ID, "Ultron", NotificationManager.IMPORTANCE_LOW)
         )
     }
 
@@ -3360,20 +3360,20 @@ class JarvisConversationService : Service() {
 
     private fun buildNotification(): android.app.Notification {
         val (title, text) = when {
-            _isStandby.value -> "Jarvis is in the background" to "Say \"Hey Jarvis\" to wake me up"
+            _isStandby.value -> "Ultron is in the background" to "Say \"Hey Ultron\" to wake me up"
             _isSessionOn.value && !_connectionStatus.value.equals("LIVE", ignoreCase = true) ->
-                "Jarvis is reconnecting" to "Connection: ${_connectionStatus.value}. Requests may not be heard yet."
+                "Ultron is reconnecting" to "Connection: ${_connectionStatus.value}. Requests may not be heard yet."
             _isSessionOn.value && lastResponseTimedOut ->
-                "Jarvis did not reply" to "Connection is active. Repeat your request."
+                "Ultron did not reply" to "Connection is active. Repeat your request."
             _isSessionOn.value && _conversationState.value == ConversationState.SPEAKING ->
-                "Jarvis is replying" to "Audio response is playing"
+                "Ultron is replying" to "Audio response is playing"
             _isSessionOn.value && _conversationState.value == ConversationState.THINKING ->
-                "Jarvis is thinking" to "Processing your request"
+                "Ultron is thinking" to "Processing your request"
             _isSessionOn.value && _conversationState.value == ConversationState.LISTENING ->
-                "Jarvis is listening" to "Speak your request now"
+                "Ultron is listening" to "Speak your request now"
             _isSessionOn.value ->
-                "Jarvis is ready" to "Connected. Say your request or \"Hey Jarvis\"."
-            else -> "Jarvis" to "Starting up\u2026"
+                "Ultron is ready" to "Connected. Say your request or \"Hey Ultron\"."
+            else -> "Ultron" to "Starting up\u2026"
         }
         val contentIntent = PendingIntent.getActivity(
             this, 0, Intent(this, MainActivity::class.java),

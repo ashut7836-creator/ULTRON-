@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>Jarvis — Settings</title>
+<title>Ultron — Settings</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
@@ -267,7 +267,7 @@
     transform:translateX(20px); background:var(--cyan); box-shadow:0 0 8px var(--cyan);
   }
 
-  /* mobile control / what jarvis can do */
+  /* mobile control / what ultron can do */
   .cmd-list{list-style:none; margin-top:4px;}
   .cmd-list li{
     font-size:.84rem; color:var(--ink-dim); padding:9px 0 9px 18px; position:relative;
@@ -427,7 +427,7 @@
         <!-- 2. Notifications -->
         <div class="perm-row">
           <div class="perm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#2be7ff" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1-1.6 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1h.1a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg></div>
-          <div class="perm-info"><div class="t">Notification Service</div><div class="s">Keeps Jarvis alive in background</div></div>
+          <div class="perm-info"><div class="t">Notification Service</div><div class="s">Keeps Ultron alive in background</div></div>
           <div class="perm-status pending" id="permNotificationBtn" onclick="requestPerm('notifications')">ALLOW</div>
         </div>
 
@@ -518,14 +518,14 @@
     </div>
   </div>
 
-  <!-- 8. MOBILE CONTROL — WHAT JARVIS CAN DO -->
+  <!-- 8. MOBILE CONTROL — WHAT ULTRON CAN DO -->
   <div class="section">
     <div class="section-head">
       <div class="sec-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#2be7ff" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
       <h2>Mobile Control</h2>
     </div>
     <div class="panel">
-      <span class="field-label">WHAT JARVIS CAN DO ON YOUR PHONE</span>
+      <span class="field-label">WHAT ULTRON CAN DO ON YOUR PHONE</span>
       <ul class="cmd-list">
         <li><b>"Turn on / off flashlight"</b></li>
         <li><b>"Set brightness to 50%"</b>, "Increase brightness"</li>
@@ -539,7 +539,7 @@
         <span class="pdot"></span>
         <span class="ptitle">WhatsApp Confirmation Policy: Active</span>
       </div>
-      <p class="policy-desc">Jarvis will never send any message without explicit verbal confirmation.</p>
+      <p class="policy-desc">Ultron will never send any message without explicit verbal confirmation.</p>
     </div>
   </div>
 
@@ -773,7 +773,7 @@
     if (finalCount === total) {
       warnNote.className = 'warn-note all-ok';
       warnNote.firstElementChild.textContent = '✓';
-      warnText.textContent = 'Core permissions allowed. JARVIS is fully operational.';
+      warnText.textContent = 'Core permissions allowed. ULTRON is fully operational.';
     } else {
       warnNote.className = 'warn-note';
       warnNote.firstElementChild.textContent = '⚠';

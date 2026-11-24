@@ -10,7 +10,7 @@ import kotlin.system.exitProcess
 
 /**
  * ╔══════════════════════════════════════════════════════════════╗
- * ║           JARVIS ASSISTANT — SECURITY MODULE                 ║
+ * ║           ULTRON ASSISTANT — SECURITY MODULE                 ║
  * ║   Original Developer  : Tech GPTx                           ║
  * ║   Copyright © 2026    : Tech GPTx. All Rights Reserved.     ║
  * ║   GitHub              : https://github.com/techgptx/Playlist ║
@@ -54,7 +54,7 @@ object SecurityManager {
             showTamperAlert(
                 context,
                 "Clone Detected",
-                "This is an unauthorised clone of the JARVIS app by $DEVELOPER_NAME.\n\n" +
+                "This is an unauthorised clone of the ULTRON app by $DEVELOPER_NAME.\n\n" +
                 "Original: $EXPECTED_PACKAGE\n" +
                 "Found   : ${context.packageName}\n\n" +
                 "The app will now close. Please download the official version from:\n$GITHUB_REPO"

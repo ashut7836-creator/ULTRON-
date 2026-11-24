@@ -77,7 +77,7 @@
                     android:layout_height="48dp"
                     android:src="@drawable/ic_jarvis_logo"
                     android:scaleType="fitCenter"
-                    android:contentDescription="Jarvis Logo" />
+                    android:contentDescription="Ultron Logo" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:gravity="center"
-                    android:text="Grant necessary authorizations so Jarvis can listen, speak, deliver accurate weather, and process your requests seamlessly."
+                    android:text="Grant necessary authorizations so Ultron can listen, speak, deliver accurate weather, and process your requests seamlessly."
                     android:textColor="?attr/themeTextMuted"
                     android:textSize="12.5sp"
                     android:lineSpacingExtra="2dp" />
@@ -162,7 +162,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Required for voice conversations, voice recognition, and real-time audio interaction with Jarvis."
+                    android:text="Required for voice conversations, voice recognition, and real-time audio interaction with Ultron."
                     android:textColor="?attr/themeTextMuted"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -366,7 +366,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Optional: Allows Jarvis floating bubble to appear anywhere on your phone for quick one-tap voice commands."
+                    android:text="Optional: Allows Ultron floating bubble to appear anywhere on your phone for quick one-tap voice commands."
                     android:textColor="?attr/themeTextMuted"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -434,7 +434,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Essential for autonomous AI actions: allows Jarvis to tap buttons, search apps, type messages, and scroll hands-free on your screen."
+                    android:text="Essential for autonomous AI actions: allows Ultron to tap buttons, search apps, type messages, and scroll hands-free on your screen."
                     android:textColor="?attr/themeTextMuted"
                     android:textSize="12sp" />
             </LinearLayout>
