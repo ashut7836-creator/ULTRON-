@@ -1,12 +1,11 @@
 # 🤖 ULTRON ⚡ Voice Assistant - Complete Tutorial Playlist (Parts 1 to 7)
 
-[![License: Custom](https://img.shields.io/badge/License-Tech_GPTx_Attribution-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Android%208.0%2B-green.svg)](https://developer.android.com)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0.20-purple.svg)](https://kotlinlang.org)
 [![Gradle](https://img.shields.io/badge/Gradle-8.9-brightgreen.svg)](https://gradle.org)
 [![Releases](https://img.shields.io/badge/APK_Releases-Part_1_to_7-orange.svg)](https://github.com/techgptx/Playlist/releases)
 
-Welcome to the official source code repository for the **ULTRON ⚡ Android AI Assistant Series** by **Tech GPTx**!
+Welcome to the official source code repository for the **ULTRON ⚡ Android AI Assistant Series** by **Ashu**!
 Every part in this playlist is organized into its own self-contained, ready-to-run Android Studio
 
 ---
@@ -63,5 +62,5 @@ Playlist/
 - **No file > 100 MB**: 100% compliant with GitHub push limits (no LFS errors).
 - **Safe & Sanitized**: Developer-specific machine paths in `local.properties` removed in favor of clean templates.
 
-Happy coding! Build your own JARVIS! 🎙️⚡  
-*Follow & Subscribe to **Tech GPTx** for more AI & Android tutorials!*
+Happy coding! Build your own ULTRON ⚡! 🎙️⚡  
+*Follow & Subscribe to **Ashu** for more AI & Android tutorials!*
