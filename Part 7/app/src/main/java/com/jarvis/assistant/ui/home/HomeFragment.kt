@@ -280,7 +280,7 @@ class HomeFragment : Fragment() {
                 binding.tvWeatherCondition.text = weather.condition
                 binding.tvWeatherDetails.text = weather.details
                 binding.ivWeatherIcon.setImageResource(weather.iconResId)
-                // Keep Jarvis's context aligned with the city shown on Home.
+                // Keep Ultron's context aligned with the city shown on Home.
                 preferences.userLocation = weather.cityName
             } else if (_binding != null) {
                 binding.tvWeatherCondition.text = "Live Weather • Tap to retry"
@@ -356,7 +356,7 @@ class HomeFragment : Fragment() {
                     }.collect { status ->
                         if (!status.isOn) {
                             setOrbState("idle")
-                            binding.tvListeningStatus.text = "JARVIS OFF • TAP TO START"
+                            binding.tvListeningStatus.text = "ULTRON OFF • TAP TO START"
                             binding.tvListeningStatus.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_subtle))
                             binding.tvHoldHint.text = "Tap mic or orb to power on"
                             binding.tvHoldHint.visibility = View.VISIBLE
@@ -374,7 +374,7 @@ class HomeFragment : Fragment() {
                             )
                         } else if (status.isStandby) {
                             setOrbState("idle")
-                            binding.tvListeningStatus.text = "STANDBY • SAY 'HEY JARVIS'"
+                            binding.tvListeningStatus.text = "STANDBY • SAY 'HEY ULTRON'"
                             binding.tvListeningStatus.setTextColor(Color.parseColor("#3B82F6"))
                             binding.tvHoldHint.text = "Listening for wake word • Hold mic to power off"
                             binding.tvHoldHint.visibility = View.VISIBLE
@@ -395,7 +395,7 @@ class HomeFragment : Fragment() {
                                 }
                                 ConversationState.SPEAKING -> {
                                     setOrbState("speaking")
-                                    binding.tvListeningStatus.text = "JARVIS SPEAKING..."
+                                    binding.tvListeningStatus.text = "ULTRON SPEAKING..."
                                     binding.tvListeningStatus.setTextColor(Color.parseColor("#06B6D4"))
                                     binding.tvHoldHint.text = "Tap mic to interrupt"
                                     binding.dotStatusGlow.backgroundTintList = ColorStateList.valueOf(
@@ -551,7 +551,7 @@ class HomeFragment : Fragment() {
             visibility = View.GONE
         }
         panel.addView(android.widget.TextView(requireContext()).apply {
-            text = "JARVIS AGENT PROGRESS"
+            text = "ULTRON AGENT PROGRESS"
             textSize = 11f
             typeface = android.graphics.Typeface.DEFAULT_BOLD
             setTextColor(android.graphics.Color.rgb(103, 232, 249))
@@ -573,7 +573,7 @@ class HomeFragment : Fragment() {
                         android.net.Uri.parse("package:${requireContext().packageName}")
                     ))
                 } catch (_: Exception) {
-                    android.widget.Toast.makeText(requireContext(), "Open Android Settings → Apps → JARVIS → Display over other apps.", android.widget.Toast.LENGTH_LONG).show()
+                    android.widget.Toast.makeText(requireContext(), "Open Android Settings → Apps → ULTRON → Display over other apps.", android.widget.Toast.LENGTH_LONG).show()
                 }
             }
         }, android.widget.LinearLayout.LayoutParams(-2, dp(44)))
