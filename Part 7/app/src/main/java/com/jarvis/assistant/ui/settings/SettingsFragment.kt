@@ -64,7 +64,7 @@ class SettingsFragment : Fragment() {
     }
 
     private fun loadUserData() {
-        val userName = preferences.userName.ifBlank { "Rehaan" }
+        val userName = preferences.userName.ifBlank { "Operator" }
         binding.tvProfileName.text = userName
         binding.tvProfileSubtitle.text = "ULTRON OPERATOR • PRIMARY USER"
 
@@ -242,7 +242,7 @@ class SettingsFragment : Fragment() {
 
     private fun showEditNameDialog() {
         val input = EditText(requireContext()).apply {
-            setText(preferences.userName.ifBlank { "Rehaan" })
+            setText(preferences.userName.ifBlank { "Operator" })
             setSelection(text.length)
         }
         MaterialAlertDialogBuilder(requireContext())
