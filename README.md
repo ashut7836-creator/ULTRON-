@@ -7,23 +7,23 @@
 [![Releases](https://img.shields.io/badge/APK_Releases-Part_1_to_7-orange.svg)](https://github.com/techgptx/Playlist/releases)
 
 Welcome to the official source code repository for the **ULTRON ⚡ Android AI Assistant Series** by **Tech GPTx**!
-Every part in this playlist is organized into its own self-contained, ready-to-run Android Studio
+This fork keeps each of the seven original tutorial projects in its own self-contained, ready-to-run Android Studio
 
 ---
 
-## 📲 Direct APK Downloads (Parts 1 to 7)
+## 📲 Original Tutorial APK References (Parts 1 to 7)
 
-Don't want to compile from source right now? Pre-built APKs for Parts 1 to 7 are available in the **[GitHub Releases](https://github.com/techgptx/Playlist/releases)** section:
+The releases linked below belong to the original Tech GPTx tutorial project. They are reference builds and are **not rebranded ULTRON APKs**:
 
 | Part | Name | Features Highlight | APK Download |
 |---|---|---|---|
-| **Part 1** | JARVIS-Part-1 | Gemini Live Bidi WebSocket, PCM Streaming, 3D Canvas Orb | [Download APK](https://github.com/techgptx/Playlist/releases) |
-| **Part 2** | JARVIS-Part-2 | Vosk Offline Hotword Manager, Foreground Services | [Download APK](https://github.com/techgptx/Playlist/releases) |
-| **Part 3** | JARVIS-Part-3 | Offline Wake Word, Accessibility Engine, Memory Room DB | [Download APK](https://github.com/techgptx/Playlist/releases) |
-| **Part 4** | JARVIS-Part-4 | Ultra Low-Latency Audio Pipeline, Natural Barge-In | [Download APK](https://github.com/techgptx/Playlist/releases) |
-| **Part 5** | JARVIS-Part-5 | WhatsApp & YouTube System Automations, UI Polish | [Download APK](https://github.com/techgptx/Playlist/releases) |
-| **Part 6** | JARVIS-Part-6 | Real-time Live Screen-Sharing Vision & Reasoning | [Download APK](https://github.com/techgptx/Playlist/releases) |
-| **Part 7** | JARVIS-Part-7 | Agentic Workflows, 17 Floating Overlays, Sound FX | [Download APK](https://github.com/techgptx/Playlist/releases) |
+| **Part 1** | Original Tutorial APK — Part 1 | Gemini Live Bidi WebSocket, PCM Streaming, 3D Canvas Orb | [Download APK](https://github.com/techgptx/Playlist/releases) |
+| **Part 2** | Original Tutorial APK — Part 2 | Vosk Offline Hotword Manager, Foreground Services | [Download APK](https://github.com/techgptx/Playlist/releases) |
+| **Part 3** | Original Tutorial APK — Part 3 | Offline Wake Word, Accessibility Engine, Memory Room DB | [Download APK](https://github.com/techgptx/Playlist/releases) |
+| **Part 4** | Original Tutorial APK — Part 4 | Ultra Low-Latency Audio Pipeline, Natural Barge-In | [Download APK](https://github.com/techgptx/Playlist/releases) |
+| **Part 5** | Original Tutorial APK — Part 5 | WhatsApp & YouTube System Automations, UI Polish | [Download APK](https://github.com/techgptx/Playlist/releases) |
+| **Part 6** | Original Tutorial APK — Part 6 | Real-time Live Screen-Sharing Vision & Reasoning | [Download APK](https://github.com/techgptx/Playlist/releases) |
+| **Part 7** | Original Tutorial APK — Part 7 | Agentic Workflows, 17 Floating Overlays, Sound FX | [Download APK](https://github.com/techgptx/Playlist/releases) |
 
 ---
 
@@ -63,5 +63,5 @@ Playlist/
 - **No file > 100 MB**: 100% compliant with GitHub push limits (no LFS errors).
 - **Safe & Sanitized**: Developer-specific machine paths in `local.properties` removed in favor of clean templates.
 
-Happy coding! Build your own JARVIS! 🎙️⚡  
+Happy coding! Build your own ULTRON ⚡! 🎙️  
 *Follow & Subscribe to **Tech GPTx** for more AI & Android tutorials!*
