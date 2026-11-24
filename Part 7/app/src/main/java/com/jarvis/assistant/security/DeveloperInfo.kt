@@ -12,5 +12,5 @@ object DeveloperInfo {
     const val LICENSE             = "TAMCL v1.0"
     const val LICENSE_DETAIL      = "Content creators MUST credit Tech GPTx in any video using this code."
     const val APP_OFFICIAL_ID     = "com.jarvis.assistant"
-    const val VERIFIED_DEVELOPER  = "Tech GPTx — Official JARVIS Tutorial Series"
+    const val VERIFIED_DEVELOPER  = "Tech GPTx — Original Android AI Assistant Source"
 }

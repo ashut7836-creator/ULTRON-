@@ -1,4 +1,4 @@
-# JARVIS Voice Assistant
+# ULTRON Voice Assistant
 
 An Android voice assistant built with Kotlin, Gemini Live, on-device voice components, accessibility automation, screen capture, and a native Android UI.
 
@@ -41,9 +41,9 @@ Build outputs are written under `app/build/outputs/` and are generated files, no
 Create and protect a release key outside this repository, then supply these values only in the local shell or Gradle user properties:
 
 ```powershell
-$env:JARVIS_RELEASE_STORE_FILE = 'C:\secure\jarvis-release.jks'
+$env:JARVIS_RELEASE_STORE_FILE = 'C:\secure\ultron-release.jks'
 $env:JARVIS_RELEASE_STORE_PASSWORD = '<local secret>'
-$env:JARVIS_RELEASE_KEY_ALIAS = 'jarvis-release'
+$env:JARVIS_RELEASE_KEY_ALIAS = 'ultron-release'
 $env:JARVIS_RELEASE_KEY_PASSWORD = '<local secret>'
 $env:JARVIS_RELEASE_CERT_SHA256 = '<64 hex characters from keytool -list -v>'
 $env:JARVIS_DEVELOPER_NAME = 'TechGpt X'
