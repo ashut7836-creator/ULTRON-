@@ -573,7 +573,7 @@ class JarvisConversationService : Service() {
     private fun isBackgroundCommand(text: String): Boolean {
         val backgroundPattern = Regex(
             "\\b(ultron[,;.!?\\s]*)?(go|stay|move|enter|switch)\\s+(to|into|in\\s+to|in)?\\s*(the\\s+)?(background|standby)\\b|" +
-            "\\bjarvis[,;.!?\\s]+(standby|sleep|background|go\\s+to\\s+sleep)\\b"
+            "\\bultron[,;.!?\\s]+(standby|sleep|background|go\\s+to\\s+sleep)\\b"
         )
         return backgroundPattern.containsMatchIn(text)
     }

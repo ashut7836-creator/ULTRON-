@@ -114,7 +114,7 @@ class WakeWordForegroundService : Service(), RecognitionListener {
     private fun containsWakeWord(phrase: String): Boolean {
         val words = phrase.lowercase(Locale.ROOT)
         return Regex("\\b(hey\\s+)?ultron\\b").containsMatchIn(words) ||
-            Regex("\\bjarvis\\s+(wake\\s+up|wakeup)\\b").containsMatchIn(words)
+            Regex("\\bultron\\s+(wake\\s+up|wakeup)\\b").containsMatchIn(words)
     }
 
     override fun onResults(results: Bundle?) { check(results); restartListening() }
