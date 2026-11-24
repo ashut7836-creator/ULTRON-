@@ -6,8 +6,8 @@
 [![Gradle](https://img.shields.io/badge/Gradle-8.9-brightgreen.svg)](https://gradle.org)
 [![Releases](https://img.shields.io/badge/APK_Releases-Part_1_to_7-orange.svg)](https://github.com/techgptx/Playlist/releases)
 
-Welcome to the official source code repository for the **ULTRON ⚡ Android AI Assistant Series** by **Tech GPTx**!
-This fork keeps each of the seven original tutorial projects in its own self-contained, ready-to-run Android Studio
+This is a personal fork and rebrand named **ULTRON ⚡**, based on the original Android AI assistant project by **Tech GPTx**.
+This fork keeps each of the seven original tutorial projects in its own self-contained, ready-to-run Android Studio project.
 
 ---
 
