@@ -19,7 +19,7 @@ import java.util.Locale
 
 /**
  * Keeps the app process and microphone permission alive after the user has
- * explicitly put Jarvis in standby.  Only the platform recognizer receives
+ * explicitly put Ultron in standby.  Only the platform recognizer receives
  * standby audio; Gemini is disconnected until a wake phrase is detected.
  */
 class WakeWordForegroundService : Service(), RecognitionListener {
@@ -113,8 +113,8 @@ class WakeWordForegroundService : Service(), RecognitionListener {
 
     private fun containsWakeWord(phrase: String): Boolean {
         val words = phrase.lowercase(Locale.ROOT)
-        return Regex("\\b(hey\\s+)?jarvis\\b").containsMatchIn(words) ||
-            Regex("\\bjarvis\\s+(wake\\s+up|wakeup)\\b").containsMatchIn(words)
+        return Regex("\\b(hey\\s+)?ultron\\b").containsMatchIn(words) ||
+            Regex("\\bultron\\s+(wake\\s+up|wakeup)\\b").containsMatchIn(words)
     }
 
     override fun onResults(results: Bundle?) { check(results); restartListening() }
@@ -140,14 +140,14 @@ class WakeWordForegroundService : Service(), RecognitionListener {
 
     private fun createChannel() {
         (getSystemService(NOTIFICATION_SERVICE) as NotificationManager).createNotificationChannel(
-            NotificationChannel(CHANNEL_ID, "Jarvis background listening", NotificationManager.IMPORTANCE_LOW)
+            NotificationChannel(CHANNEL_ID, "Ultron background listening", NotificationManager.IMPORTANCE_LOW)
         )
     }
 
     private fun notification() = NotificationCompat.Builder(this, CHANNEL_ID)
         .setSmallIcon(android.R.drawable.ic_btn_speak_now)
-        .setContentTitle("Jarvis is in the background")
-        .setContentText("Say \"Hey Jarvis\" to wake me up")
+        .setContentTitle("Ultron is in the background")
+        .setContentText("Say \"Hey Ultron\" to wake me up")
         .setOngoing(true)
         .setCategory(NotificationCompat.CATEGORY_SERVICE)
         .addAction(0, "Stop", PendingIntent.getService(

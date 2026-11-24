@@ -64,7 +64,7 @@ class JarvisChatAdapter(
                 binding.tvAssistantMessage.text = turn.jarvisResponse
 
                 binding.btnAssistantCopy.setOnClickListener {
-                    copyToClipboard(context, "Jarvis response", turn.jarvisResponse)
+                    copyToClipboard(context, "Ultron response", turn.jarvisResponse)
                 }
 
                 binding.btnAssistantPlay.setOnClickListener {

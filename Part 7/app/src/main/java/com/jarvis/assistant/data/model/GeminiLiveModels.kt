@@ -52,7 +52,7 @@ object GeminiConstants {
         "Zephyr"
     )
 
-    const val PERSONALITY_ASSISTANT = "Jarvis Pro"
+    const val PERSONALITY_ASSISTANT = "ULTRON ⚡ Pro"
     const val PERSONALITY_GIRLFRIEND = "Girlfriend Mode"
     const val PERSONALITY_BOYFRIEND = "Boyfriend Mode"
     const val PERSONALITY_TECHGPT_X = "TechGPT X Mode"

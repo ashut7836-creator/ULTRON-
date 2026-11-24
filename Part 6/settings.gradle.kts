@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "JARVIS-Part-6"
+rootProject.name = "ULTRON-Part-6"
 include(":app")

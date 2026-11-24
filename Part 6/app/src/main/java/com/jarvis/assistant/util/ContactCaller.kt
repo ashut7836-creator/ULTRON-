@@ -9,7 +9,7 @@ import android.provider.ContactsContract
 import androidx.core.content.ContextCompat
 
 /**
- * Lets JARVIS place phone calls by spoken contact name or raw phone number.
+ * Lets ULTRON place phone calls by spoken contact name or raw phone number.
  */
 object ContactCaller {
 

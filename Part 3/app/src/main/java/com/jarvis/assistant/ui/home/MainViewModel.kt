@@ -117,7 +117,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             val context = getApplication<Application>()
             if (!PermissionHelper.hasAllRequiredPermissions(context)) {
                 viewModelScope.launch {
-                    _eventFlow.emit("Please allow all permissions in Settings to activate Jarvis.")
+                    _eventFlow.emit("Please allow all permissions in Settings to activate Ultron.")
                 }
                 return
             }

@@ -45,7 +45,7 @@ import kotlinx.coroutines.launch
 import java.util.Locale
 
 /**
- * Owns the *entire* Jarvis conversation lifecycle: the microphone, the audio
+ * Owns the *entire* Ultron conversation lifecycle: the microphone, the audio
  * player, the Gemini Live WebSocket, the 120-second inactivity timer, and the
  * wake-word standby listener.
  *
@@ -53,7 +53,7 @@ import java.util.Locale
  * user removes the app from Recents (or the screen turns off), Android
  * destroys the Activity and its ViewModel - if the live session lived there,
  * the conversation would die with it. Because everything here is owned by a
- * foreground service instead, the mic stays on and Jarvis keeps talking
+ * foreground service instead, the mic stays on and Ultron keeps talking
  * normally even with the app closed. The Activity/ViewModel only *observes*
  * this service's state through the companion StateFlows below; they never
  * own the audio pipeline.
@@ -409,8 +409,8 @@ class JarvisConversationService : Service() {
 
             try {
                 // Focus grammar only on the wake words.
-                // "wake up" is deliberately excluded so reels/songs/dialogue never falsely wake Jarvis.
-                val grammar = "[\"hey jarvis\", \"hi jarvis\", \"hello jarvis\", \"ok jarvis\", \"jarvis\", \"[unk]\"]"
+                // "wake up" is deliberately excluded so reels/songs/dialogue never falsely wake Ultron.
+                val grammar = "[\"hey ultron\", \"hi ultron\", \"hello ultron\", \"ok ultron\", \"ultron\", \"[unk]\"]"
                 val rec = Recognizer(model, 16000.0f, grammar)
                 val service = SpeechService(rec, 16000.0f)
                 service.startListening(voskListener)
@@ -494,10 +494,10 @@ class JarvisConversationService : Service() {
         }
     }
 
-    /** Recognizes any of: "Hey Jarvis", "Hi Jarvis", "Hello Jarvis", "OK Jarvis", or "Jarvis". */
+    /** Recognizes any of: "Hey Ultron", "Hi Ultron", "Hello Ultron", "OK Ultron", or "Ultron". */
     private fun containsWakeWord(phrase: String): Boolean {
         val words = phrase.lowercase(Locale.ROOT)
-        return Regex("\\b(hey jarvis|hi jarvis|hello jarvis|ok jarvis|jarvis)\\b").containsMatchIn(words)
+        return Regex("\\b(hey ultron|hi ultron|hello ultron|ok ultron|ultron)\\b").containsMatchIn(words)
     }
 
     private fun onWakeWordDetected() {
@@ -572,8 +572,8 @@ class JarvisConversationService : Service() {
 
     private fun isBackgroundCommand(text: String): Boolean {
         val backgroundPattern = Regex(
-            "\\b(jarvis[,;.!?\\s]*)?(go|stay|move|enter|switch)\\s+(to|into|in\\s+to|in)?\\s*(the\\s+)?(background|standby)\\b|" +
-            "\\bjarvis[,;.!?\\s]+(standby|sleep|background|go\\s+to\\s+sleep)\\b"
+            "\\b(ultron[,;.!?\\s]*)?(go|stay|move|enter|switch)\\s+(to|into|in\\s+to|in)?\\s*(the\\s+)?(background|standby)\\b|" +
+            "\\bultron[,;.!?\\s]+(standby|sleep|background|go\\s+to\\s+sleep)\\b"
         )
         return backgroundPattern.containsMatchIn(text)
     }
@@ -679,7 +679,7 @@ class JarvisConversationService : Service() {
 
     private fun createChannel() {
         (getSystemService(NOTIFICATION_SERVICE) as NotificationManager).createNotificationChannel(
-            NotificationChannel(CHANNEL_ID, "Jarvis", NotificationManager.IMPORTANCE_LOW)
+            NotificationChannel(CHANNEL_ID, "Ultron", NotificationManager.IMPORTANCE_LOW)
         )
     }
 
@@ -690,9 +690,9 @@ class JarvisConversationService : Service() {
 
     private fun buildNotification(): android.app.Notification {
         val (title, text) = when {
-            _isSessionOn.value -> "Jarvis is listening" to "Conversation is active"
-            _isStandby.value -> "Jarvis is in the background" to "Say \"Hey Jarvis\" to wake me up"
-            else -> "Jarvis" to "Starting up\u2026"
+            _isSessionOn.value -> "Ultron is listening" to "Conversation is active"
+            _isStandby.value -> "Ultron is in the background" to "Say \"Hey Ultron\" to wake me up"
+            else -> "Ultron" to "Starting up\u2026"
         }
         val contentIntent = PendingIntent.getActivity(
             this, 0, Intent(this, MainActivity::class.java),

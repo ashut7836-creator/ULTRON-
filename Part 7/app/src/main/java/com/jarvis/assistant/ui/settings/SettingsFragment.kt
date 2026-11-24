@@ -64,9 +64,9 @@ class SettingsFragment : Fragment() {
     }
 
     private fun loadUserData() {
-        val userName = preferences.userName.ifBlank { "Rehaan" }
+        val userName = preferences.userName.ifBlank { "Operator" }
         binding.tvProfileName.text = userName
-        binding.tvProfileSubtitle.text = "JARVIS OPERATOR • PRIMARY USER"
+        binding.tvProfileSubtitle.text = "ULTRON OPERATOR • PRIMARY USER"
 
         // Owner Voice Profile Status
         val hasVoiceProfile = preferences.hasOwnerVoiceProfile()
@@ -184,7 +184,7 @@ class SettingsFragment : Fragment() {
 
         binding.rowAppIdentity.setOnClickListener {
             MaterialAlertDialogBuilder(requireContext())
-                .setTitle("JARVIS App Identity")
+                .setTitle("ULTRON App Identity")
                 .setMessage(com.jarvis.assistant.security.AppIdentityVerifier.report(requireContext()))
                 .setPositiveButton("Close", null)
                 .show()
@@ -227,7 +227,7 @@ class SettingsFragment : Fragment() {
     private fun showWakeWordDialog() {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Wake Words & Sensitivity")
-            .setMessage("• Wake Words: 'Jarvis', 'Hey Jarvis'\n• Acoustic Trigger: Double Clap detection\n• Standby Mode: Low-power local Vosk offline engine\n\nWhen standby listening is active, Jarvis awakens instantly upon hearing your voice.")
+            .setMessage("• Wake Words: 'Ultron', 'Hey Ultron'\n• Acoustic Trigger: Double Clap detection\n• Standby Mode: Low-power local Vosk offline engine\n\nWhen standby listening is active, Ultron awakens instantly upon hearing your voice.")
             .setPositiveButton("Got It", null)
             .show()
     }
@@ -235,19 +235,19 @@ class SettingsFragment : Fragment() {
     private fun showAppAutomationDialog() {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Autonomous App Automation")
-            .setMessage("Jarvis is integrated with your device capabilities:\n\n• WhatsApp: Hands-free messaging & calls\n• YouTube: Search and playback automation\n• Phone Controls: Flashlight, Volume, Brightness, Bluetooth\n• Apps & Tools: Launch, search, and manage apps via voice")
+            .setMessage("Ultron is integrated with your device capabilities:\n\n• WhatsApp: Hands-free messaging & calls\n• YouTube: Search and playback automation\n• Phone Controls: Flashlight, Volume, Brightness, Bluetooth\n• Apps & Tools: Launch, search, and manage apps via voice")
             .setPositiveButton("Close", null)
             .show()
     }
 
     private fun showEditNameDialog() {
         val input = EditText(requireContext()).apply {
-            setText(preferences.userName.ifBlank { "Rehaan" })
+            setText(preferences.userName.ifBlank { "Operator" })
             setSelection(text.length)
         }
         MaterialAlertDialogBuilder(requireContext())
             .setTitle("Operator Name")
-            .setMessage("Enter the name Jarvis should use to address you:")
+            .setMessage("Enter the name Ultron should use to address you:")
             .setView(input)
             .setPositiveButton("Save") { _, _ ->
                 val newName = input.text.toString().trim()

@@ -103,7 +103,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
-                        android:text="Jarvis Pro · Charon"
+                        android:text="Ultron Pro · Charon"
                         android:textColor="?attr/themeTextPrimary"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -113,13 +113,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
-                        android:text="Ready to help, TechGPT X."
+                        android:text="Ready to help, Operator."
                         android:textColor="?attr/themeTextMuted"
                         android:textSize="12sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- 1. Jarvis Pro (Default) -->
+            <!-- 1. Ultron Pro (Default) -->
             <LinearLayout
                 android:id="@+id/cardPersonaJarvis"
                 android:layout_width="match_parent"
@@ -142,7 +142,7 @@
                         android:src="@drawable/ic_nav_home"
                         app:tint="@color/accent_sapphire"
                         android:padding="12dp"
-                        android:contentDescription="Jarvis" />
+                        android:contentDescription="Ultron" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -161,7 +161,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Jarvis Pro"
+                            android:text="Ultron Pro"
                             android:textColor="?attr/themeTextPrimary"
                             android:textSize="16sp"
                             android:fontFamily="sans-serif-medium"
@@ -188,7 +188,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Intelligent, witty &amp; strategic assistant by TechGPT X"
+                        android:text="Intelligent, witty &amp; strategic assistant."
                         android:textColor="?attr/themeTextMuted"
                         android:textSize="12sp"
                         android:fontFamily="sans-serif"
@@ -394,7 +394,7 @@
                         android:src="@drawable/ic_code_chip"
                         app:tint="#10B981"
                         android:padding="12dp"
-                        android:contentDescription="TechGPT X" />
+                        android:contentDescription="ULTRON Core" />
                 </FrameLayout>
 
                 <LinearLayout
@@ -413,7 +413,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TechGPT X Mode"
+                            android:text="ULTRON Core Mode"
                             android:textColor="?attr/themeTextPrimary"
                             android:textSize="16sp"
                             android:fontFamily="sans-serif-medium"
@@ -459,7 +459,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="User Name (Default: TechGPT X)"
+                android:text="User Name (Default: Operator)"
                 android:textColor="?attr/themeTextMuted"
                 android:textSize="13sp"
                 android:fontFamily="sans-serif-medium"
@@ -498,8 +498,8 @@
                         android:id="@+id/etUserName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="TechGPT X"
-                        android:text="TechGPT X"
+                        android:hint="Operator"
+                        android:text="Operator"
                         android:inputType="textPersonName"
                         android:textColor="?attr/themeTextPrimary"
                         android:textSize="14sp"
