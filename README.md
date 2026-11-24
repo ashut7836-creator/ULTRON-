@@ -6,22 +6,8 @@
 [![Gradle](https://img.shields.io/badge/Gradle-8.9-brightgreen.svg)](https://gradle.org)
 [![Releases](https://img.shields.io/badge/APK_Releases-Part_1_to_7-orange.svg)](https://github.com/techgptx/Playlist/releases)
 
-Welcome to the official source code repository for the **JARVIS Android AI Assistant Series** by **Tech GPTx**!
-Every part in this playlist is organized into its own self-contained, ready-to-run Android Studio project.
-
----
-
-## 📜 LICENSE & MANDATORY VIDEO ATTRIBUTION (MUST READ)
-
-> [!IMPORTANT]
-> **100% Mandatory Shoutout Policy:**
-> If you use this source code, fork this repository, or build any video, tutorial, Reel, Short, livestream, or course based on this project, **you MUST give 100% visible and verbal credit/shoutout to Tech GPTx**.
->
-> 1. **In Video Spoken Audio:** Explicit verbal mention: *"Credit to Tech GPTx for the JARVIS AI Android source code / tutorial."*
-> 2. **In Description (Top 3 lines):** *"Original Project by Tech GPTx: https://github.com/techgptx/Playlist"*
-> 3. **On-Screen Display:** Visible watermark or on-screen text crediting **Tech GPTx**.
-> 
-> Read the full legal terms in the [LICENSE](LICENSE) file. Removing attribution or failing to provide a shoutout is a direct license violation.
+Welcome to the official source code repository for the **ULTRON ⚡ Android AI Assistant Series** by **Tech GPTx**!
+Every part in this playlist is organized into its own self-contained, ready-to-run Android Studio
 
 ---
 
