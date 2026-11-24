@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
-<title>Jarvis — Personal AI</title>
+<title>Ultron — Personal AI</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
@@ -128,7 +128,7 @@ tailwind.config = {
   .hud[data-state="thinking"] #status-dot { background: #c084fc; box-shadow: 0 0 8px #c084fc; }
   .hud[data-state="speaking"] #status-dot { background: #74d1ff; box-shadow: 0 0 8px #74d1ff; }
 
-  /* ---- Arc reactor reacts to Jarvis / user talking ---- */
+  /* ---- Arc reactor reacts to Ultron / user talking ---- */
   #arc-glow, #arc-ring-outer, #arc-ring-mid { transition: background 0.4s ease, opacity 0.4s ease, stroke 0.4s ease, filter 0.4s ease; }
 
   .hud[data-state="listening"] #arc-glow { background: rgba(0,229,255,0.4); }
@@ -224,7 +224,7 @@ tailwind.config = {
 
       <!-- Identity + live status ticker -->
       <div class="flex flex-col justify-center min-w-0 gap-0.5 flex-1">
-        <span id="brand-name" class="font-display text-[16px] font-semibold tracking-tight text-on-surface truncate" style="font-family:'Space Grotesk',sans-serif; letter-spacing: 0.05em;">Jarvis</span>
+        <span id="brand-name" class="font-display text-[16px] font-semibold tracking-tight text-on-surface truncate" style="font-family:'Space Grotesk',sans-serif; letter-spacing: 0.05em;">Ultron</span>
         <span class="flex items-center gap-1.5 text-[11px] text-on-surface-variant truncate" style="color:#a7b3b6;">
           <span class="relative flex w-1.5 h-1.5 shrink-0">
             <span id="status-dot-ping" class="absolute inline-flex w-full h-full rounded-full bg-primary-container opacity-60 animate-ping" style="background-color:#00e5ff;"></span>
@@ -347,7 +347,7 @@ tailwind.config = {
                 <svg class="w-[13px] h-[13px]" viewBox="0 0 24 24" fill="currentColor" style="color:#00e5ff;"><circle cx="12" cy="12" r="2.5"/><circle cx="12" cy="4" r="1.5"/><circle cx="12" cy="20" r="1.5"/><circle cx="4" cy="12" r="1.5"/><circle cx="20" cy="12" r="1.5"/><circle cx="6.34" cy="6.34" r="1.5"/><circle cx="17.66" cy="17.66" r="1.5"/><circle cx="6.34" cy="17.66" r="1.5"/><circle cx="17.66" cy="6.34" r="1.5"/></svg>
               </div>
               <div class="flex flex-col gap-1 min-w-0">
-                <span class="text-[10px] text-on-surface-variant/70 px-1" style="color:#a7b3b6;">Jarvis</span>
+                <span class="text-[10px] text-on-surface-variant/70 px-1" style="color:#a7b3b6;">Ultron</span>
                 <div class="chat-bubble rounded-xl rounded-tl-sm bg-surface-container-high/60 backdrop-blur-sm border border-outline-variant/40 px-3 py-2 text-[13px] leading-snug text-on-surface" style="background:rgba(32,36,39,0.7); border-color:rgba(46,53,56,0.6);">
                   Systems operational. Ready for your command, sir.
                 </div>
@@ -647,7 +647,7 @@ void main(){
     const meta = document.createElement('span');
     meta.className = 'flex items-center gap-1.5 text-[10px] px-1';
     meta.style.color = 'rgba(167,179,182,0.7)';
-    meta.innerHTML = (isUser ? 'You' : 'Jarvis') + ' <span style="opacity:0.5">·</span> ' + (timeStr || timeNow());
+    meta.innerHTML = (isUser ? 'You' : 'Ultron') + ' <span style="opacity:0.5">·</span> ' + (timeStr || timeNow());
 
     const bubble = document.createElement('div');
     bubble.className = 'chat-bubble px-3 py-2 text-[13px] leading-snug rounded-xl backdrop-blur-sm';
@@ -685,7 +685,7 @@ void main(){
         SVG_BLUR_SM +
       '</div>' +
       '<div class="flex flex-col gap-1">' +
-        '<span class="text-[10px] px-1" style="color:rgba(167,179,182,0.7);">Jarvis</span>' +
+        '<span class="text-[10px] px-1" style="color:rgba(167,179,182,0.7);">Ultron</span>' +
         '<div class="chat-bubble flex items-center gap-1 rounded-xl rounded-tl-sm px-3 py-2" style="background:rgba(32,36,39,0.7); border:1px solid rgba(46,53,56,0.6);">' +
           '<span class="typing-dot w-1.5 h-1.5 rounded-full" style="background:#a7b3b6;"></span>' +
           '<span class="typing-dot w-1.5 h-1.5 rounded-full" style="background:#a7b3b6; animation-delay:0.15s"></span>' +
@@ -755,7 +755,7 @@ void main(){
         '</div>' +
         '<div class="flex flex-col gap-1 min-w-0 items-start">' +
           '<span class="flex items-center gap-1.5 text-[10px] px-1" style="color:rgba(167,179,182,0.7);">' +
-            'Jarvis <span style="opacity:0.5">·</span> ' + timeNow() +
+            'Ultron <span style="opacity:0.5">·</span> ' + timeNow() +
           '</span>' +
           '<div class="chat-bubble live-assistant-text px-3 py-2 text-[13px] leading-snug rounded-xl backdrop-blur-sm" style="background:rgba(32,36,39,0.7); border:1px solid rgba(46,53,56,0.6); border-top-left-radius:2px; color:#e6e8eb; word-break:break-word;"></div>' +
         '</div>';
@@ -788,7 +788,7 @@ void main(){
       activeLiveAssistantRow = null;
       chatLog.innerHTML = '';
       if (turns.length === 0) {
-        addMessage('jarvis', 'Systems operational. Ready for your command, sir.', timeNow());
+        addMessage('ultron', 'Systems operational. Ready for your command, sir.', timeNow());
         return;
       }
       turns.forEach(t => {
@@ -796,7 +796,7 @@ void main(){
           addMessage('user', t.userTranscript, t.formattedTime || '');
         }
         if (t.jarvisResponse && t.jarvisResponse !== '(Audio response)') {
-          addMessage('jarvis', t.jarvisResponse, t.formattedTime || '');
+          addMessage('ultron', t.jarvisResponse, t.formattedTime || '');
         }
       });
     } catch (e) {
@@ -1014,8 +1014,8 @@ void main(){
         setTimeout(() => {
           removeTypingIndicator();
           setState('speaking');
-          addMessage('you', 'Hello Jarvis, give me a status report.');
-          addMessage('jarvis', 'All systems online, sir. Power core is stable and telemetry link is secure.');
+          addMessage('you', 'Hello Ultron, give me a status report.');
+          addMessage('ultron', 'All systems online, sir. Power core is stable and telemetry link is secure.');
           setTimeout(() => {
             setState('idle');
           }, 2400);
