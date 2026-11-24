@@ -56,7 +56,7 @@ import kotlinx.coroutines.withContext
 import java.util.Locale
 
 /**
- * Owns the *entire* Jarvis conversation lifecycle: the microphone, the audio
+ * Owns the *entire* Ultron conversation lifecycle: the microphone, the audio
  * player, the Gemini Live WebSocket, the 120-second inactivity timer, and the
  * wake-word standby listener.
  *
@@ -64,7 +64,7 @@ import java.util.Locale
  * user removes the app from Recents (or the screen turns off), Android
  * destroys the Activity and its ViewModel - if the live session lived there,
  * the conversation would die with it. Because everything here is owned by a
- * foreground service instead, the mic stays on and Jarvis keeps talking
+ * foreground service instead, the mic stays on and Ultron keeps talking
  * normally even with the app closed. The Activity/ViewModel only *observes*
  * this service's state through the companion StateFlows below; they never
  * own the audio pipeline.
@@ -259,7 +259,7 @@ class JarvisConversationService : Service() {
         }
 
         if (!PermissionHelper.hasAllRequiredPermissions(this)) {
-            serviceScope.launch { _events.emit("Please allow all required permissions in Settings to use Jarvis.") }
+            serviceScope.launch { _events.emit("Please allow all required permissions in Settings to use Ultron.") }
             fullStop()
             return
         }
@@ -319,7 +319,7 @@ class JarvisConversationService : Service() {
                                 if (isPendingWakeGreeting) {
                                     isPendingWakeGreeting = false
                                     if (!hasSpeechInCurrentUtterance) {
-                                        liveWebSocket?.sendClientContent("Hey Jarvis")
+                                        liveWebSocket?.sendClientContent("Hey Ultron")
                                     }
                                 }
                             }
@@ -628,7 +628,7 @@ class JarvisConversationService : Service() {
                                         minimizeToHomeScreen()
                                         enterStandby(announce = false)
                                         result.put("success", true)
-                                        result.put("message", "Sent JARVIS to background standby mode.")
+                                        result.put("message", "Sent ULTRON to background standby mode.")
                                     }
 
                                     "set_flashlight" -> {
@@ -696,7 +696,7 @@ class JarvisConversationService : Service() {
     @Volatile
     private var lastCommandExecutionTime = 0L
 
-    // Holds a command that Jarvis heard but isn't confident enough about to run blindly
+    // Holds a command that Ultron heard but isn't confident enough about to run blindly
     // (e.g. a YouTube title that sounded too short/garbled). Cleared once the user
     // confirms or cancels it in a follow-up turn.
     @Volatile
@@ -739,7 +739,7 @@ class JarvisConversationService : Service() {
 
         if (cmd != null && parsed.confidence >= 0.90f) {
             // If the requested video/song is too vague or could easily be a mis-hearing
-            // (e.g. Jarvis only caught one short/filler word), confirm with the user
+            // (e.g. Ultron only caught one short/filler word), confirm with the user
             // instead of guessing and playing the wrong thing.
             if (cmd is com.jarvis.assistant.automation.command.JarvisCommand.PlayYouTube &&
                 com.jarvis.assistant.automation.command.CommandParser.isAmbiguousPlayQuery(cmd.query)
@@ -1092,8 +1092,8 @@ class JarvisConversationService : Service() {
 
         try {
             standbyActivatedTime = System.currentTimeMillis()
-            // Phrase grammar: allow single-word "jarvis", multi-syllable wake phrases, and [unk]
-            val grammar = "[\"jarvis\", \"hey jarvis\", \"hi jarvis\", \"hello jarvis\", \"ok jarvis\", \"okay jarvis\", \"wake up jarvis\", \"jarvis jarvis\", \"[unk]\"]"
+            // Phrase grammar: allow single-word "ultron", multi-syllable wake phrases, and [unk]
+            val grammar = "[\"ultron\", \"hey ultron\", \"hi ultron\", \"hello ultron\", \"ok ultron\", \"okay ultron\", \"wake up ultron\", \"ultron ultron\", \"[unk]\"]"
             val rec = Recognizer(model, 16000.0f, grammar)
             val service = SpeechService(rec, 16000.0f)
             service.startListening(voskListener)
@@ -1176,14 +1176,14 @@ class JarvisConversationService : Service() {
     private fun containsWakeWord(phrase: String): Boolean {
         val words = phrase.lowercase(Locale.ROOT).trim()
         val validWakePhrases = listOf(
-            "jarvis",
-            "hey jarvis",
-            "hi jarvis",
-            "hello jarvis",
-            "ok jarvis",
-            "okay jarvis",
-            "wake up jarvis",
-            "jarvis jarvis"
+            "ultron",
+            "hey ultron",
+            "hi ultron",
+            "hello ultron",
+            "ok ultron",
+            "okay ultron",
+            "wake up ultron",
+            "ultron ultron"
         )
         return validWakePhrases.any { wakePhrase ->
             words == wakePhrase || words.startsWith("$wakePhrase ")
@@ -1274,7 +1274,7 @@ class JarvisConversationService : Service() {
             "go to background", "go background", "go in background", "go in the background",
             "background me jao", "background mein jao", "send to background", "move to background",
             "minimize", "go home", "go to home", "go to home screen",
-            "go to sleep", "sleep jarvis", "enter standby", "standby mode", "go to standby",
+            "go to sleep", "sleep ultron", "enter standby", "standby mode", "go to standby",
             "take a break", "so jao"
         )
         return patterns.any { clean.contains(it) }
@@ -1328,7 +1328,7 @@ class JarvisConversationService : Service() {
 
     private fun createChannel() {
         (getSystemService(NOTIFICATION_SERVICE) as NotificationManager).createNotificationChannel(
-            NotificationChannel(CHANNEL_ID, "Jarvis", NotificationManager.IMPORTANCE_LOW)
+            NotificationChannel(CHANNEL_ID, "Ultron", NotificationManager.IMPORTANCE_LOW)
         )
     }
 
@@ -1339,9 +1339,9 @@ class JarvisConversationService : Service() {
 
     private fun buildNotification(): android.app.Notification {
         val (title, text) = when {
-            _isSessionOn.value -> "Jarvis is listening" to "Conversation is active"
-            _isStandby.value -> "Jarvis is in the background" to "Say \"Hey Jarvis\" to wake me up"
-            else -> "Jarvis" to "Starting up\u2026"
+            _isSessionOn.value -> "Ultron is listening" to "Conversation is active"
+            _isStandby.value -> "Ultron is in the background" to "Say \"Hey Ultron\" to wake me up"
+            else -> "Ultron" to "Starting up\u2026"
         }
         val contentIntent = PendingIntent.getActivity(
             this, 0, Intent(this, MainActivity::class.java),

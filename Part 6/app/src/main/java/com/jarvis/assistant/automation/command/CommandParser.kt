@@ -25,7 +25,7 @@ object CommandParser {
 
     /**
      * Returns true when a parsed YouTube play query is too vague/short to trust blindly
-     * (likely a mis-heard or dropped title), meaning Jarvis should confirm with the user
+     * (likely a mis-heard or dropped title), meaning Ultron should confirm with the user
      * before actually launching a video instead of guessing.
      */
     fun isAmbiguousPlayQuery(query: String): Boolean {
@@ -42,7 +42,7 @@ object CommandParser {
 
     fun parse(input: String, isAwaitingConfirmation: Boolean = false, isAwaitingDisambiguation: Boolean = false): ParsedCommandResult {
         val clean = input
-            .replace(Regex("(?i)^(hey jarvis|hi jarvis|hello jarvis|ok jarvis|jarvis|service)[,\\s]*"), "")
+            .replace(Regex("(?i)^(hey ultron|hi ultron|hello ultron|ok ultron|ultron|service)[,\\s]*"), "")
             .replace(Regex("[.,!?:;\"'\\s]+$"), "")
             .trim()
             .lowercase(Locale.ROOT)
@@ -219,11 +219,11 @@ object CommandParser {
 
         // 7. Memory Commands
         if (clean.startsWith("remember ") || clean.startsWith("remember that ")) {
-            val fact = input.replace(Regex("(?i)^(hey jarvis|jarvis|please)?\\s*(remember that|remember)\\s*"), "").trim()
+            val fact = input.replace(Regex("(?i)^(hey ultron|ultron|please)?\\s*(remember that|remember)\\s*"), "").trim()
             return ParsedCommandResult(JarvisCommand.Remember(fact), 0.95f, "MEMORY_REMEMBER")
         }
         if (clean.startsWith("forget ") || clean.startsWith("forget that ") || clean.startsWith("forget my ")) {
-            val target = input.replace(Regex("(?i)^(hey jarvis|jarvis|please)?\\s*(forget that|forget my|forget about|forget)\\s*"), "").trim()
+            val target = input.replace(Regex("(?i)^(hey ultron|ultron|please)?\\s*(forget that|forget my|forget about|forget)\\s*"), "").trim()
             return ParsedCommandResult(JarvisCommand.Forget(target), 0.95f, "MEMORY_FORGET")
         }
         if (clean == "what do you remember about me" || clean == "what do you remember" || clean == "tell me what you remember") {
@@ -330,7 +330,7 @@ object CommandParser {
             val target = phoneCallMatch.groupValues[1].trim()
                 .replace(Regex("(?i)^(him|her|them|someone|anyone|later|back)$"), "")
                 .trim()
-            val nonTargetWords = listOf("it", "that", "this", "day", "off", "back", "later", "yesterday", "tomorrow", "jarvis")
+            val nonTargetWords = listOf("it", "that", "this", "day", "off", "back", "later", "yesterday", "tomorrow", "ultron")
             if (target.isNotBlank() && target.length >= 2 && !nonTargetWords.contains(target.lowercase(Locale.ROOT))) {
                 return ParsedCommandResult(JarvisCommand.PhoneCall(target), 0.96f, "PHONE_CALL")
             }
@@ -362,7 +362,7 @@ object CommandParser {
         val ytSuffixMatch = ytSuffixRegex.find(clean)
         if (ytSuffixMatch != null && !clean.startsWith("open ") && !clean.startsWith("launch ")) {
             var raw = ytSuffixMatch.groupValues[1].trim()
-            raw = raw.replace(Regex("(?i)^(hey jarvis|jarvis|please|in|on|at|pe|par)\\s+"), "")
+            raw = raw.replace(Regex("(?i)^(hey ultron|ultron|please|in|on|at|pe|par)\\s+"), "")
                 .replace(Regex("(?i)^(youtube\\s+(?:pe|par|in|on)?)\\s*"), "")
                 .replace(Regex("(?i)\\s+(ke\\s+gane|ka\\s+gana|song|video|gana)$"), "")
                 .trim()
@@ -484,7 +484,7 @@ object CommandParser {
         }
 
         // 10b. Go To Background / Standby
-        if (clean.matches(Regex("$prefix(?:go\\s+to\\s+background|go\\s+background|go\\s+in\\s+background|go\\s+in\\s+the\\s+background|minimize|go\\s+to\\s+home\\s+screen|go\\s+home|background\\s+me\\s+jao|background\\s+mein\\s+jao|background\\s+ki\\s+vellu|background\\s+po|background\\s+ch\\s+jao|background\\s+la\\s+ja|background\\s+e\\s+jao|send\\s+to\\s+background|go\\s+to\\s+sleep|sleep\\s+jarvis|enter\\s+standby|standby\\s+mode|so\\s+jao|paduko|sleep)$", RegexOption.IGNORE_CASE))) {
+        if (clean.matches(Regex("$prefix(?:go\\s+to\\s+background|go\\s+background|go\\s+in\\s+background|go\\s+in\\s+the\\s+background|minimize|go\\s+to\\s+home\\s+screen|go\\s+home|background\\s+me\\s+jao|background\\s+mein\\s+jao|background\\s+ki\\s+vellu|background\\s+po|background\\s+ch\\s+jao|background\\s+la\\s+ja|background\\s+e\\s+jao|send\\s+to\\s+background|go\\s+to\\s+sleep|sleep\\s+ultron|enter\\s+standby|standby\\s+mode|so\\s+jao|paduko|sleep)$", RegexOption.IGNORE_CASE))) {
             return ParsedCommandResult(JarvisCommand.GoToBackground, 1.0f, "GO_TO_BACKGROUND")
         }
 
